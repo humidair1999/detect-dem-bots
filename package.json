@@ -1,0 +1,32 @@
+{
+  "name": "express-static-boilerplate",
+  "version": "1.0.0",
+  "author": "J. Ky Marsh <jkymarsh@gmail.com>",
+  "description": "a simple express.js static file server with html5bp and some sensible default middlewares",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jkymarsh/express-static-boilerplate.git"
+  },
+  "keywords": [
+    "static",
+    "server",
+    "simple",
+    "express"
+  ],
+  "engines": {
+    "node": ">=0.10.26"
+  },
+  "dependencies": {
+    "express": "4.1.1",
+    "compression": "1.0.2",
+    "body-parser": "1.0.2",
+    "method-override": "1.0.0",
+    "morgan": "1.0.1",
+    "response-time": "1.0.0",
+    "serve-favicon": "2.0.0"
+  }
+}
