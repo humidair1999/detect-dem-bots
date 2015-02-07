@@ -45,7 +45,7 @@ app.get('/train', function(req, res){
     }else {
       console.log(result);
 
-      res.send(result);
+      res.json(result);
  
       //    [ 
       //      { 'date, 'close'}, 
