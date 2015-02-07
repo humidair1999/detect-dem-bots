@@ -23,10 +23,10 @@
   "dependencies": {
     "body-parser": "1.0.2",
     "compression": "1.0.2",
-    "dsv": "0.0.4",
     "express": "4.1.1",
     "method-override": "1.0.0",
     "morgan": "1.0.1",
+    "node-tsv-json": "^0.2.1",
     "response-time": "1.0.0",
     "serve-favicon": "2.0.0"
   },
