@@ -31,14 +31,11 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/train', function(req, res){
-  
-
+app.get('/train', function(req, res) {
     tsv({
     input: "data/train_data.tsv", 
-    output: "data/output.json"
-    //array of arrays, 1st array is column names 
-    ,parseRows: true
+    output: "data/output.json",
+    parseRows: true
   }, function(err, result) {
     if(err) {
       console.error(err);
@@ -60,6 +57,10 @@ app.get('/train', function(req, res){
       //    ] 
     }
   });
+});
+
+app.get('/make-request', function(req, res) {
+    res.send('ok');
 });
 
 app.listen(process.env.PORT || 3000);
