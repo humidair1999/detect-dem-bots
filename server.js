@@ -15,7 +15,24 @@ var favicon = require('serve-favicon');
 
 var tsv = require("node-tsv-json");
 
-var fs = require('fs')
+var fs = require('fs');
+
+var mongojs = require('mongojs');
+// the db is on a remote server (the port default to mongo)
+var db = mongojs('mongodb://localhost/detect-dem-bots', ['warnings']);
+
+db.on('error',function(err) {
+    console.log('database error', err);
+});
+
+db.on('ready',function() {
+    console.log('database connected');
+});
+
+// find everything
+db.warnings.find(function(err, docs) {
+    console.log(docs);
+});
 
 var app = express();
 
