@@ -32,8 +32,8 @@ FakeRequest.prototype.makeRequest = function() {
     $.ajax({
         url: '/fake-request?ip=' + this.ip + '&user_agent=' + this.userAgent + '&referer=' + this.referer,
         type: 'get'
-    }).done(function() {
-        console.log('done');
+    }).done(function(data) {
+        console.log(data);
     }).fail(function() {
         console.log('fail');
     });
@@ -53,13 +53,13 @@ $.ajax({
             isValid: element[3]
         };
 
-        fakeRequests.push(new FakeRequest(opts));
+        if (index < 100) {
+            fakeRequests.push(new FakeRequest(opts));
+        }
     });
 
     _.each(fakeRequests, function(element, index) {
-        if (index < 100) {
-            $('#fake-requests').append(element.$el);
-        }
+        $('#fake-requests').append(element.$el);
     })
 }).fail(function() {
     console.log('fail');

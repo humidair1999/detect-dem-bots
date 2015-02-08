@@ -13,11 +13,13 @@ var responseTime = require('response-time');
 // middleware to serve a favicon prior to all other assets/routes
 var favicon = require('serve-favicon');
 
-tsv = require("node-tsv-json");
+var tsv = require("node-tsv-json");
 
 var fs = require('fs')
 
 var app = express();
+
+var detectBots = require('./lib/detect-bots');
 
 app.use(morgan('dev'));
 app.use(responseTime());
@@ -60,11 +62,11 @@ app.get('/train', function(req, res) {
 });
 
 app.get('/fake-request', function(req, res) {
-    console.log(req.query);
+    var botPoints = detectBots(req.query);
 
-    // checkIfBot(req.params);
+    console.log(botPoints);
 
-    res.send('ok');
+    res.status(botPoints);
 });
 
 app.listen(process.env.PORT || 3000);
