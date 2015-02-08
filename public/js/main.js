@@ -29,8 +29,6 @@ FakeRequest.prototype.attachButtonHandler = function() {
 };
 
 FakeRequest.prototype.makeRequest = function() {
-    console.log();
-
     $.ajax({
         url: '/fake-request?ip=' + this.ip + '&user_agent=' + this.userAgent + '&referer=' + this.referer,
         type: 'get'

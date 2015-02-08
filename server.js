@@ -60,7 +60,9 @@ app.get('/train', function(req, res) {
 });
 
 app.get('/fake-request', function(req, res) {
-    console.log(req);
+    console.log(req.query);
+
+    // checkIfBot(req.params);
 
     res.send('ok');
 });
