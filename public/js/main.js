@@ -3,11 +3,36 @@ var FakeRequest = function(opts) {
     this.userAgent = opts.userAgent;
     this.referer = opts.referer;
     this.isValid = opts.isValid;
+
+    this.template = _.template($('#request-row-template').html());
+
+    this.initialize();
+};
+
+FakeRequest.prototype.initialize = function() {
+    this.$el = $(this.template({ request: {
+        ip: this.ip,
+        userAgent: this.userAgent,
+        referer: this.referer,
+        isValid: this.isValid
+    }}));
+
+    this.attachButtonHandler();
+};
+
+FakeRequest.prototype.attachButtonHandler = function() {
+    var that = this;
+
+    this.$el.find('.make-fake-request').on('click', function(evt) {
+        that.makeRequest();
+    });
 };
 
 FakeRequest.prototype.makeRequest = function() {
+    console.log();
+
     $.ajax({
-        url: '/make-request',
+        url: '/fake-request?ip=' + this.ip + '&user_agent=' + this.userAgent + '&referer=' + this.referer,
         type: 'get'
     }).done(function() {
         console.log('done');
@@ -34,7 +59,9 @@ $.ajax({
     });
 
     _.each(fakeRequests, function(element, index) {
-        element.makeRequest();
+        if (index < 100) {
+            $('#fake-requests').append(element.$el);
+        }
     })
 }).fail(function() {
     console.log('fail');
