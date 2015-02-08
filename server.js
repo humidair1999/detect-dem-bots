@@ -59,7 +59,9 @@ app.get('/train', function(req, res) {
   });
 });
 
-app.get('/make-request', function(req, res) {
+app.get('/fake-request', function(req, res) {
+    console.log(req);
+
     res.send('ok');
 });
 

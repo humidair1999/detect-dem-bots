@@ -17,7 +17,17 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <p>Hello world! This is HTML5 Boilerplate.</p>
+        <ul id="fake-requests"></ul>
+
+        <script id="request-row-template" type="text/template">
+            <li>
+                <span><%= request.ip %></span>
+                <span><%= request.userAgent %></span>
+                <span><%= request.referer %></span>
+                <span><%= request.isValid %></span>
+                <button class="make-fake-request">make fake request</button>
+            </li>
+        </script>
 
         <script src="js/vendor/underscore.js"></script>
         <script src="js/vendor/jquery-1.11.1.js"></script>
